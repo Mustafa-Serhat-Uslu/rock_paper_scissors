@@ -13,7 +13,6 @@ const roundResultReducer = (state = INITIAL_STATE, action:any) => {
         ...state,
         roundResult: {...action.payload}
       };
-
     default:
       return state;
   }

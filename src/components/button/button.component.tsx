@@ -5,8 +5,10 @@ import "./button.styles.scss";
 
 import { resetBets } from "../../redux/bets/bets.actions";
 import { selectBets } from "../../redux/bets/bets.selectors";
-import { selectPlayState } from "../../redux/play-state/play-state.selectors";
 import { changePlayState } from "../../redux/play-state/play-state.actions";
+import { selectPlayState } from "../../redux/play-state/play-state.selectors";
+import { setRoundResult } from "../../redux/round-result/round-result.actions";
+import { increaseRoundCount } from "../../redux/round-win-counts/round-win-count.actions.types";
 
 import * as GameConstants from "../../game-logic/game-logic.constants";
 import * as GameUtils from "../../game-logic/game-logic.utils";
@@ -15,18 +17,18 @@ interface Props {
   bets: { [key: string]: number };
   playState: any;
   changePlayState?: any;
-  setRoundResult: React.Dispatch<
-    React.SetStateAction<GameConstants.RoundResult | undefined>
-  >;
+  increaseRoundCount?: any;
+  setRoundResult?: any;
   resetBets: any
 }
 
 const Button: React.FC<Props> = ({
   bets,
   playState,
-  changePlayState,
   resetBets,
-  setRoundResult
+  setRoundResult,
+  changePlayState,
+  increaseRoundCount,
 }) => {
 
   const betPlaced=Object.values(bets)
@@ -45,6 +47,7 @@ const Button: React.FC<Props> = ({
         resolveRound();
         changePlayState(GameConstants.PlayStates.InPlay);
         setTimeout(() => {
+          increaseRoundCount();
           changePlayState(GameConstants.PlayStates.AfterPlay);
         }, GameConstants.stateChangeTime);
         return;
@@ -92,7 +95,9 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch: any) => ({
   resetBets: () => dispatch(resetBets()),
-  changePlayState: (it:GameConstants.PlayStates) => dispatch(changePlayState(it)),
+  increaseRoundCount: () => dispatch(increaseRoundCount()),
+  setRoundResult: (item: GameConstants.RoundResult) => dispatch(setRoundResult(item)),
+  changePlayState: (item:GameConstants.PlayStates) => dispatch(changePlayState(item)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Button);

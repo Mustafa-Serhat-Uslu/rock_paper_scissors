@@ -3,8 +3,8 @@ import BetTypes from "./bets.types";
 import * as GameConstants from "../../game-logic/game-logic.constants";
 
 const INITIAL_STATE = {
-  bets: {...GameConstants.startingBets
-}};
+  bets: {...GameConstants.startingBets}
+};
 
 const betsReducer = (state = INITIAL_STATE, action:any) => {
   switch (action.type) {

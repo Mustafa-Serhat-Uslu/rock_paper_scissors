@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import "./styles.scss";
 
 import Header from "./components/header/header.component";
@@ -10,36 +9,24 @@ import SelectionCard from "./components/reusables/selection-card/selection-card.
 import * as GameConstants from "./game-logic/game-logic.constants";
 
 const App: React.FC = () => {
-  const [winCount, setWinCount] = useState<number>(0);
-  const [roundCount, setRoundCount] = useState<number>(0);
-  const [roundResult, setRoundResult] = useState<GameConstants.RoundResult>();
-
   console.log("! APP RENDER !");
 
   return (
     <div className={"app-container"}>
-      <Header bet={roundCount} win={winCount} />
+      <Header />
 
       <div className={"main-area-container"}>
         <div className={"text-container"}>
-          <TextArea
-            roundResult={roundResult}
-          />
+          <TextArea />
         </div>
 
         <div className="cards-container">
           {GameConstants.cardTypesArr.map((cardType) => (
-            <SelectionCard
-              winner={""}
-              key={cardType}
-              cardLabel={cardType}
-            />
+            <SelectionCard key={cardType} cardLabel={cardType} />
           ))}
         </div>
 
-        <Button
-          setRoundResult={setRoundResult}
-        />
+        <Button />
       </div>
     </div>
   );

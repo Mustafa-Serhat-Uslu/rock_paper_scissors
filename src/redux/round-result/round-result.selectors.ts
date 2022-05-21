@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-const selectCurrentRoundResult = (state:any) => state.x;
+const selectCurrentRoundResult = (state:any) => state.roundResult;
 
 export const selectRoundResult = createSelector(
   [selectCurrentRoundResult],

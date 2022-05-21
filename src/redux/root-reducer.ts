@@ -6,7 +6,7 @@ import betsReducer from "./bets/bets.reducer";
 import balanceReducer from "./balance/balance.reducer";
 import playStateReducer from "./play-state/play-state.reducer";
 import roundResultReducer from "./round-result/round-result.reducer";
-import roundWinCountsReducer from "./round-win-count/round-win-counts.reducer";
+import roundWinCountsReducer from "./round-win-counts/round-win-counts.reducer";
 
 const persistConfig = {
   key: "root",

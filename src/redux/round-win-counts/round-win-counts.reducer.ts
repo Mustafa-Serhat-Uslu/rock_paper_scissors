@@ -1,13 +1,11 @@
 import RoundWinCountsTypes from "./round-win-counts.types";
 
-import * as GameConstants from "../../game-logic/game-logic.constants";
-
 const INITIAL_STATE = {
   bet: 0,
   win: 0
 };
 
-const roundWinCountsReducer = (state = INITIAL_STATE, action:any) => {
+const roundWinCountsReducer = (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
     case RoundWinCountsTypes.INCREASE_ROUND_COUNT:
       return {

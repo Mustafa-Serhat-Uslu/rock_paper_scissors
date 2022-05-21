@@ -1,14 +1,13 @@
 import { createSelector } from "reselect";
 
-const selectCurrentBetCount = (state:any) => state.bet;
-const selectCurrentWinCount = (state:any) => state.win;
+const selectCurrentHeaderCounts = (state: any) => state.roundWinCounts;
 
 export const selectBetCount = createSelector(
-  [selectCurrentBetCount],
+  [selectCurrentHeaderCounts],
   (state) => state.bet
 );
 
 export const selectWinCount = createSelector(
-  [selectCurrentWinCount],
+  [selectCurrentHeaderCounts],
   (state) => state.win
 );
