@@ -1,0 +1,24 @@
+$buttonColor: rgb(219, 190, 21);
+
+.button{
+  width: 160px;
+  height: 73px;
+  border-radius: 48px;
+  border-width: 3px;
+  border-color: $buttonColor;
+  background: black;
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 32px 0px;
+}
+
+.button-h1{
+  color: $buttonColor;
+}
+
+.inPlay{
+  opacity: 0.5;
+}

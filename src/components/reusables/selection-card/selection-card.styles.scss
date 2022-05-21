@@ -1,0 +1,68 @@
+$redMain: rgb(80,9,30);
+$redSecondary:rgb(135,11,42);
+
+$blueMain:rgb(33,31,79); 
+$blueSecondary:rgb(37,113,210); 
+
+$greenMain:rgb(26,56,29);
+$greenSecondary:rgb(22,118,86);
+
+$winHighligt: 20%;
+
+.red{
+  background-color: $redMain;
+  border: 7px solid $redSecondary;
+  color: $redSecondary;
+
+}
+
+.red-win{
+  color: lighten($redSecondary, $winHighligt);
+  border-color: lighten($redSecondary, $winHighligt);
+}
+
+.blue{
+  background-color: $blueMain;
+  border: 7px solid $blueSecondary;
+  color: $blueSecondary;
+}
+
+.blue-win{
+  color: lighten($blueSecondary, $winHighligt);
+  border-color: lighten($blueSecondary, $winHighligt);
+}
+
+.green{
+  background-color: $greenMain;
+  border: 7px solid $greenSecondary;
+  color: $greenSecondary;
+}
+
+.green-win{
+  color: lighten($greenSecondary, $winHighligt);
+  border-color: lighten($greenSecondary, $winHighligt);
+}
+
+$defaultWidth: 252px;
+$defaultHeight: 215px;
+
+.selection-card-container{
+  width: $defaultWidth;
+  height: $defaultHeight;
+  border-radius: 13px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 0px 8px rgb(255, 255, 255, 0.3);
+  }
+}
+
+.card-h1{
+  text-transform: uppercase;
+}
