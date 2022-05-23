@@ -1,32 +1,30 @@
-import BalanceActionTypes from "./balance.types";
+import { AnyAction } from "redux";
+
+import {
+  resetBalance,
+  decreaseBalance,
+  increaseBalance,
+} from "./balance.actions";
 
 import * as GameConstants from "../../game-logic/game-logic.constants";
 
-const INITIAL_STATE = {
-  balance: GameConstants.beginningBalance
-};
+const INITIAL_STATE: number = GameConstants.beginningBalance;
 
-const balanceReducer = (state = INITIAL_STATE, action:any) => {
-  switch (action.type) {
-    case BalanceActionTypes.DECREASE_BALANCE:
-      return {
-        ...state,
-        balance: state.balance - action.payload
-      };
-    case BalanceActionTypes.INCREASE_BALANCE:
-      return {
-        ...state,
-        balance: state.balance + action.payload
-      };
-    case BalanceActionTypes.RESET_BALANCE:
-      return {
-        ...state,
-        balance: GameConstants.beginningBalance
-      };
-
-    default:
-      return state;
+const balanceReducer = (
+  balance = INITIAL_STATE,
+  action = {} as AnyAction
+): number => {
+  if (decreaseBalance.match(action)) {
+    return balance - action.payload;
   }
+  if (increaseBalance.match(action)) {
+    return balance + action.payload;
+  }
+  if (resetBalance.match(action)) {
+    return GameConstants.beginningBalance;
+  }
+
+  return balance;
 };
 
 export default balanceReducer;

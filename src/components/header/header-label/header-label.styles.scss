@@ -1,11 +1,32 @@
-.header-label-container{
+$redZero: rgb(238, 11, 11);
+
+.header-label-container {
   align-items: center;
 }
 
-.header-label-title{
-  color:rgb(206, 180, 31);
+.header-label-title {
+  color: rgb(206, 180, 31);
+  text-transform: uppercase;
 }
 
-.header-label-value{
+.header-label-value {
   color: white;
+  text-transform: uppercase;
+}
+
+@keyframes anim {
+  from {
+    color: $redZero;
+  }
+  to {
+    color: white;
+  }
+}
+
+.red-Zero {
+  color: $redZero;
+  animation-name: anim;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
 }

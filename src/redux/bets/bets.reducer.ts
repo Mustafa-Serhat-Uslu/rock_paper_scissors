@@ -1,26 +1,32 @@
-import BetTypes from "./bets.types";
+import { AnyAction } from "redux";
 
 import * as GameConstants from "../../game-logic/game-logic.constants";
 
-const INITIAL_STATE = {
-  bets: {...GameConstants.startingBets}
+import { resetBets, adjustBets } from "./bets.actions";
+
+// Default bets state for each round start
+export const startingBets: GameConstants.BetsType = {
+  rock: 0,
+  paper: 0,
+  scissors: 0,
 };
 
-const betsReducer = (state = INITIAL_STATE, action:any) => {
-  switch (action.type) {
-    case BetTypes.ADJUST_BETS:
-      return {
-        ...state,
-        bets: {...action.payload}
-      };
-    case BetTypes.RESET_BETS:
-      return {
-        ...state,
-        bets: {...GameConstants.startingBets}
-      };
-    default:
-      return state;
+const INITIAL_STATE = {
+  ...startingBets,
+};
+
+const betsReducer = (
+  bets = INITIAL_STATE,
+  action = {} as AnyAction
+): GameConstants.BetsType => {
+  if (adjustBets.match(action)) {
+    return { ...action.payload };
   }
+  if (resetBets.match(action)) {
+    return { ...startingBets };
+  }
+
+  return bets;
 };
 
 export default betsReducer;

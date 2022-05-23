@@ -11,7 +11,7 @@ import roundWinCountsReducer from "./round-win-counts/round-win-counts.reducer";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: []
+  whitelist: [],
 };
 
 const rootReducer = combineReducers({
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   balance: balanceReducer,
   playState: playStateReducer,
   roundResult: roundResultReducer,
-  roundWinCounts: roundWinCountsReducer
+  roundWinCounts: roundWinCountsReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

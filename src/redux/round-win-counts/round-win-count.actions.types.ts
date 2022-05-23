@@ -1,13 +1,25 @@
-import RoundWinCountsTypes from "./round-win-counts.types";
+import ROUND_WIN_COUNTERS_TYPES from "./round-win-counts.types";
 
-export const increaseRoundCount = () => ({
-  type: RoundWinCountsTypes.INCREASE_ROUND_COUNT
-});
+import { Action, withMatcher, createAction } from "../reducer.utils";
 
-export const increaseWinCount = () => ({
-  type: RoundWinCountsTypes.INCREASE_WIN_COUNT
-});
+export type IncreaseRoundCount =
+  Action<ROUND_WIN_COUNTERS_TYPES.INCREASE_ROUND_COUNT>;
 
-export const resetHeaderCounter = () => ({
-  type: RoundWinCountsTypes.RESET_HEADER_COUNTERS
-});
+export type IncreaseWinCount =
+  Action<ROUND_WIN_COUNTERS_TYPES.INCREASE_WIN_COUNT>;
+
+export type ResetHeaderCounters =
+  Action<ROUND_WIN_COUNTERS_TYPES.RESET_HEADER_COUNTERS>;
+
+export const increaseRoundCount = withMatcher(
+  (): IncreaseRoundCount =>
+    createAction(ROUND_WIN_COUNTERS_TYPES.INCREASE_ROUND_COUNT)
+);
+export const increaseWinCount = withMatcher(
+  (): IncreaseWinCount =>
+    createAction(ROUND_WIN_COUNTERS_TYPES.INCREASE_WIN_COUNT)
+);
+export const resetHeaderCounters = withMatcher(
+  (): ResetHeaderCounters =>
+    createAction(ROUND_WIN_COUNTERS_TYPES.RESET_HEADER_COUNTERS)
+);

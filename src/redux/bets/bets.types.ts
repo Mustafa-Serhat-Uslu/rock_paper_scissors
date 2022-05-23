@@ -1,6 +1,6 @@
-const BetTypes = {
-  ADJUST_BETS: "ADJUST_BETS",
-  RESET_BETS: "RESET_BETS"
-};
+const enum BETS_ACTION_TYPES {
+  ADJUST_BETS = "ADJUST_BETS",
+  RESET_BETS = "RESET_BETS",
+}
 
-export default BetTypes;
+export default BETS_ACTION_TYPES;

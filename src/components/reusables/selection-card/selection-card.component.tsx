@@ -1,48 +1,41 @@
 import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 import "./selection-card.styles.scss";
-
-import * as GameConstants from "../../../game-logic/game-logic.constants";
-import * as GameUtils from "../../../game-logic/game-logic.utils";
+import { AnyAction, Dispatch } from "redux";
+import { useSelector, useDispatch } from "react-redux";
+import { adjustBets } from "../../../redux/bets/bets.actions";
 import { BetCircle } from "../bet-circle/bet-circle.component";
-
-import {adjustBets} from "../../../redux/bets/bets.actions";
 import { selectBets } from "../../../redux/bets/bets.selectors";
-import {decreaseBalance} from "../../../redux/balance/balance.actions";
+import { BetsType } from "../../../game-logic/game-logic.constants";
+import { decreaseBalance } from "../../../redux/balance/balance.actions";
 import { selectBalance } from "../../../redux/balance/balance.selectors";
 import { selectPlayState } from "../../../redux/play-state/play-state.selectors";
+import { RoundResultState } from "../../../redux/round-result/round-result.reducer";
 import { selectRoundResult } from "../../../redux/round-result/round-result.selectors";
 
-interface Props {
-  bets?: any;
-  balance?: any;
-  playState?: any;
-  adjustBets?: any;
-  cardLabel: string;
-  roundResult?: any;
-  decreaseBalance?: any;
-}
+import * as GameUtils from "../../../game-logic/game-logic.utils";
+import * as GameConstants from "../../../game-logic/game-logic.constants";
 
-const SelectionCard: React.FC<Props> = ({
-  bets,
-  balance,
-  cardLabel,
-  playState,
-  adjustBets,
-  roundResult,
-  decreaseBalance,
-}) => {
+type Props = {
+  cardLabel: string;
+};
+
+const SelectionCard: React.FC<Props> = ({ cardLabel }) => {
+  const dispatch: Dispatch<AnyAction> = useDispatch();
+
+  const bets: BetsType = useSelector(selectBets);
+  const balance: number = useSelector(selectBalance);
+  const roundResult: RoundResultState = useSelector(selectRoundResult);
+  const playState: GameConstants.PlayStates = useSelector(selectPlayState);
 
   // When a card is clicked check balance and selection count(no more than 2), if applicable add bet
   const handleCardClick = (clickedCard: string): void => {
     if (
       bets[clickedCard] ||
-      Object.values(bets).filter((x:any) => x > 0).length < 2
+      Object.values(bets).filter((x: any) => x > 0).length < 2
     ) {
       if (balance >= GameConstants.betAmount) {
-        decreaseBalance(GameConstants.betAmount);
-        adjustBets(GameUtils.handleBetSetting(bets, clickedCard));
+        dispatch(decreaseBalance(GameConstants.betAmount));
+        dispatch(adjustBets(GameUtils.handleBetSetting(bets, clickedCard)));
       }
     }
   };
@@ -65,8 +58,11 @@ const SelectionCard: React.FC<Props> = ({
       break;
   }
 
-  // Define highligting of card borders on AfterPlay state depending on the winner 
-  if (playState===GameConstants.PlayStates.AfterPlay && cardLabel === roundResult.winningCard){
+  // Define highligting of card borders on AfterPlay state depending on the winner
+  if (
+    playState === GameConstants.PlayStates.AfterPlay &&
+    cardLabel === roundResult.winningCard
+  ) {
     switch (roundResult.winningCard) {
       case GameConstants.CardTypes.Rock:
         selectionCardContainerClassNames += " blue-win";
@@ -85,7 +81,10 @@ const SelectionCard: React.FC<Props> = ({
   return (
     <div
       className={selectionCardContainerClassNames}
-      onClick={() => playState === GameConstants.PlayStates.BeforePlay && handleCardClick(cardLabel)}
+      onClick={() =>
+        playState === GameConstants.PlayStates.BeforePlay &&
+        handleCardClick(cardLabel)
+      }
     >
       {bets[cardLabel] ? <BetCircle amount={bets[cardLabel]} /> : null}
       <h1 className={"card-h1"}>{cardLabel}</h1>
@@ -93,16 +92,4 @@ const SelectionCard: React.FC<Props> = ({
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  bets: selectBets,
-  balance: selectBalance,
-  playState: selectPlayState,
-  roundResult: selectRoundResult,
-});
-
-const mapDispatchToProps = (dispatch:any) => ({
-  decreaseBalance: (item:number) => dispatch(decreaseBalance(item)),
-  adjustBets: (item: { [key: string]: number }) => dispatch(adjustBets(item)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectionCard);
+export default SelectionCard;

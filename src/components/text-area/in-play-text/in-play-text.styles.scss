@@ -1,0 +1,43 @@
+$yoloGold: rgb(206, 180, 31);
+
+.in-play-container {
+  display: flex;
+  color: white;
+  column-gap: 10px;
+  flex-direction: row;
+  margin-bottom: 100px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-height: 600px) {
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-height: 745px) {
+    margin-bottom: 90px;
+  }
+
+  @media screen and (max-height: 890px) {
+    margin-top: 125px;
+  }
+
+  @media screen and (min-height: 780px) {
+    font-size: large;
+  }
+}
+
+.computer-selection-h1 {
+  text-transform: uppercase;
+  width: 180px;
+}
+
+.vs-h1 {
+  color: $yoloGold;
+  width: 180px;
+}
+
+.user-selection-h1 {
+  text-transform: uppercase;
+  width: 180px;
+}

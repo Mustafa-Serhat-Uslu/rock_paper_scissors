@@ -1,0 +1,50 @@
+$yoloGold: rgb(206, 180, 31);
+
+$redWin: rgb(238, 11, 11);
+$blueWin: rgb(0, 4, 255);
+$greenWin: rgb(69, 184, 48);
+
+.after-play-container {
+  margin-bottom: 75px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+
+  @media screen and (max-height: 690px) {
+    margin-bottom: 0px;
+  }
+  @media screen and (min-height: 780px) {
+    font-size: large;
+  }
+}
+
+.winner-h1 {
+  color: rgb(48, 173, 48);
+}
+
+.win-amount-display {
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+}
+
+.win-h2 {
+  color: $yoloGold;
+}
+
+.amount-h2 {
+  color: white;
+}
+
+.winner-red {
+  color: $redWin;
+}
+.winner-blue {
+  color: $blueWin;
+}
+.winner-green {
+  color: $greenWin;
+}

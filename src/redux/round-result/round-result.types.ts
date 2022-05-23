@@ -1,5 +1,5 @@
-const RoundResultTypes = {
-  SET_ROUND_RESULT: "SET_ROUND_RESULT"
-};
+const enum ROUND_RESULT_ACTION_TYPES {
+  SET_ROUND_RESULT = "SET_ROUND_RESULT",
+}
 
-export default RoundResultTypes;
+export default ROUND_RESULT_ACTION_TYPES;

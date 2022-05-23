@@ -1,16 +1,15 @@
-import { persistStore } from "redux-persist";
-import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
+import { persistStore } from "redux-persist";
+import { createStore, applyMiddleware, Middleware } from "redux";
 
 import rootReducer from "./root-reducer";
 
-const middlewares = [];
+export type RootState = ReturnType<typeof rootReducer>;
 
-if (process.env.NODE_ENV === "development") {
-  // remove
-  middlewares.push(logger);
-}
+const middleWares = [process.env.NODE_ENV !== "production" && logger].filter(
+  (middleware): middleware is Middleware => Boolean(middleware)
+);
 
-export const store = createStore(rootReducer, applyMiddleware(...middlewares));
+export const store = createStore(rootReducer, applyMiddleware(...middleWares));
 
 export const persistor = persistStore(store);

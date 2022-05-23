@@ -1,49 +1,48 @@
-$redMain: rgb(80,9,30);
-$redWin:rgb(238, 11, 11);
-$redSecondary:rgba(207, 21, 67, 0.883);
+$redMain: rgb(80, 9, 30);
+$redWin: rgb(238, 11, 11);
+$redSecondary: rgba(207, 21, 67, 0.596);
 
-$blueMain:rgb(33, 30, 87); 
-$blueWin:rgb(0, 4, 255); 
-$blueSecondary:rgba(16, 109, 230, 0.794); 
+$blueMain: rgb(33, 30, 87);
+$blueWin: rgb(0, 4, 255);
+$blueSecondary: rgba(16, 109, 230, 0.794);
 
-$greenMain:rgb(26, 61, 26);
-$greenWin:rgb(69, 184, 48);
-$greenSecondary:rgba(43, 194, 16, 0.555);
+$greenMain: rgb(26, 61, 26);
+$greenWin: rgb(69, 184, 48);
+$greenSecondary: rgba(43, 194, 16, 0.555);
 
-$winShadow:  0px 0px 8px rgba(121, 121, 121, 0.815);
+$winShadow: 0px 0px 8px rgba(121, 121, 121, 0.815);
 
-.red{
+.red {
   background-color: $redMain;
   border: 7px solid $redSecondary;
   color: $redSecondary;
-
 }
 
-.red-win{
+.red-win {
   color: $redWin;
   border-color: $redWin;
   box-shadow: $winShadow;
 }
 
-.blue{
+.blue {
   background-color: $blueMain;
   border: 7px solid $blueSecondary;
   color: $blueSecondary;
 }
 
-.blue-win{
+.blue-win {
   color: $blueWin;
   border-color: $blueWin;
   box-shadow: $winShadow;
 }
 
-.green{
+.green {
   background-color: $greenMain;
   border: 7px solid $greenSecondary;
   color: $greenSecondary;
 }
 
-.green-win{
+.green-win {
   color: $greenWin;
   border-color: $greenWin;
   box-shadow: $winShadow;
@@ -52,7 +51,7 @@ $winShadow:  0px 0px 8px rgba(121, 121, 121, 0.815);
 $defaultWidth: 252px;
 $defaultHeight: 215px;
 
-.selection-card-container{
+.selection-card-container {
   width: $defaultWidth;
   height: $defaultHeight;
   border-radius: 13px;
@@ -67,8 +66,25 @@ $defaultHeight: 215px;
   &:hover {
     box-shadow: $winShadow;
   }
+
+  @media screen and (max-height: 610px) {
+    width: $defaultWidth * 0.9;
+    height: $defaultHeight * 0.9;
+  }
+  @media screen and (max-height: 540px) {
+    width: $defaultWidth * 0.7;
+    height: $defaultHeight * 0.7;
+  }
+  @media screen and (max-height: 490px) {
+    width: $defaultWidth * 0.6;
+    height: $defaultHeight * 0.6;
+  }
 }
 
-.card-h1{
+.card-h1 {
   text-transform: uppercase;
+
+  @media screen and (max-height: 490px) {
+    zoom: 0.72;
+  }
 }

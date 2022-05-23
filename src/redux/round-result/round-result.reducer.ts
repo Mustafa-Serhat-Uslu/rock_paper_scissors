@@ -1,21 +1,29 @@
-import RoundResultTypes from "./round-result.types";
+import { AnyAction } from "redux";
 
-import * as GameConstants from "../../game-logic/game-logic.constants";
+import { setRoundResult } from "./round-result.actions";
 
-const INITIAL_STATE = {
-  roundResult: { roundCoefficient: 0, computerSelection: "", winningCard: "" }
+// Used in the object type returned from getRoundResult
+export type RoundResultState = {
+  readonly roundCoefficient: number;
+  readonly computerSelection: string;
+  readonly winningCard: string;
 };
 
-const roundResultReducer = (state = INITIAL_STATE, action:any) => {
-  switch (action.type) {
-    case RoundResultTypes.SET_ROUND_RESULT:
-      return {
-        ...state,
-        roundResult: {...action.payload}
-      };
-    default:
-      return state;
+const INITIAL_STATE: RoundResultState = {
+  roundCoefficient: 0,
+  computerSelection: "",
+  winningCard: "",
+};
+
+const roundResultReducer = (
+  state = INITIAL_STATE,
+  action = {} as AnyAction
+): RoundResultState => {
+  if (setRoundResult.match(action)) {
+    return { ...state, ...action.payload };
   }
+
+  return state;
 };
 
 export default roundResultReducer;

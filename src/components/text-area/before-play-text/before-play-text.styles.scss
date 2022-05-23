@@ -1,0 +1,16 @@
+$yoloGold: rgb(206, 180, 31);
+
+.before-play-h3 {
+  text-transform: uppercase;
+  margin-top: 165px;
+  color: $yoloGold;
+
+  @media screen and (max-height: 690px) {
+    margin-top: 0px;
+    margin-bottom: 15px;
+  }
+
+  @media screen and (max-height: 890px) {
+    margin-top: 125px;
+  }
+}

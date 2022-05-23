@@ -1,6 +1,9 @@
 import { createSelector } from "reselect";
+import { RootState } from "../store";
 
-const selectCurrentHeaderCounts = (state: any) => state.roundWinCounts;
+const selectCurrentHeaderCounts = (
+  state: RootState
+): { [key: string]: number } => state.roundWinCounts;
 
 export const selectBetCount = createSelector(
   [selectCurrentHeaderCounts],

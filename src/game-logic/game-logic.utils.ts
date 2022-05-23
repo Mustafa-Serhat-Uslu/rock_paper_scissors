@@ -25,18 +25,18 @@ const compareCards = (card1: string, card2: string): string => {
 };
 
 // Chooses a random card for the computers selection from cardTypes
-const getComputerSelection = (): string => {
+const getComputerSelection: () => string = () => {
   return GameConstants.cardTypesArr[Math.floor(Math.random() * 3 + 0)];
 };
 
-// Get winner of the round by returning winning coefficient for user; ( x0, x3 or x14) and the winning card
+// Get winner of the round by returning winning coefficient for user; (x0, x3 or x14) and the winning card
 export const getRoundResult = (
   playerSelections: string[]
 ): GameConstants.RoundResult => {
   let result: GameConstants.RoundResult = {
     roundCoefficient: 0,
     computerSelection: getComputerSelection(),
-    winningCard: ""
+    winningCard: "",
   };
 
   // Compare each card agains each other

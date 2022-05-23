@@ -1,0 +1,65 @@
+* {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  background: linear-gradient(#5e5e5e, #0e0e0e);
+}
+
+.main-area-container {
+  width: 85%;
+  height: 100%;
+  bottom: 0px;
+  max-width: 960px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  @media screen and (min-width: 2400px) {
+    zoom: 1.2;
+  }
+  @media screen and (min-width: 1900px) {
+    zoom: 1.125;
+  }
+  @media screen and (max-width: 970px) {
+    zoom: 0.85;
+  }
+  @media screen and (max-width: 735px) {
+    zoom: 0.7;
+  }
+  @media screen and (max-width: 625px) {
+    zoom: 0.6;
+  }
+  @media screen and (max-width: 520px) {
+    zoom: 0.55;
+  }
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+
+  @media screen and (max-width: 460px) {
+    flex-direction: column;
+  }
+}

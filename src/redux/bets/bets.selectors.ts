@@ -1,8 +1,9 @@
 import { createSelector } from "reselect";
+import { RootState } from "../store";
 
-const selectCurrentBets = (state:any) => state.bets;
+import * as GameConstants from "../../game-logic/game-logic.constants";
 
-export const selectBets = createSelector(
-  [selectCurrentBets],
-  (state) => state.bets
-);
+const selectCurrentBets = (state: RootState): GameConstants.BetsType =>
+  state.bets;
+
+export const selectBets = createSelector([selectCurrentBets], (state) => state);

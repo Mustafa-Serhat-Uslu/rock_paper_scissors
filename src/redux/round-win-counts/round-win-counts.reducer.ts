@@ -1,32 +1,43 @@
-import RoundWinCountsTypes from "./round-win-counts.types";
+import { AnyAction } from "redux";
 
-const INITIAL_STATE = {
+import {
+  increaseRoundCount,
+  increaseWinCount,
+  resetHeaderCounters,
+} from "./round-win-count.actions.types";
+
+export const startingHeaderCounters: { [key: string]: number } = {
   bet: 0,
-  win: 0
+  win: 0,
 };
 
-const roundWinCountsReducer = (state = INITIAL_STATE, action: any) => {
-  switch (action.type) {
-    case RoundWinCountsTypes.INCREASE_ROUND_COUNT:
-      return {
-        ...state,
-        bet: state.bet + 1
-      };
-    case RoundWinCountsTypes.INCREASE_WIN_COUNT:
-      return {
-        ...state,
-        win: state.win + 1
-      };
-    case RoundWinCountsTypes.RESET_HEADER_COUNTERS:
-      return {
-        ...state,
-        win: 0,
-        bet: 0
-      };
+const INITIAL_STATE = {
+  ...startingHeaderCounters,
+};
 
-    default:
-      return state;
+const roundWinCountsReducer = (
+  state = INITIAL_STATE,
+  action = {} as AnyAction
+): { [key: string]: number } => {
+  if (increaseRoundCount.match(action)) {
+    return {
+      ...state,
+      bet: state.bet + 1,
+    };
   }
+  if (increaseWinCount.match(action)) {
+    return {
+      ...state,
+      win: state.win + 1,
+    };
+  }
+  if (resetHeaderCounters.match(action)) {
+    return {
+      ...startingHeaderCounters,
+    };
+  }
+
+  return state;
 };
 
 export default roundWinCountsReducer;
