@@ -1,46 +1,25 @@
-# Getting Started with Create React App
+# Rock Paper Scissors Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live app:
+https://mustafa-serhat-uslu.github.io/rock_paper_scissors/
 
-## Available Scripts
 
-In the project directory, you can run:
+The tech stack: 
+TypeScript, React, Redux, Scss
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Summary:
+This is a responsive React application. Redux workflow is used to control all of the state. Rules of the game are spesified in "game-logic.utils" and can be modified easily. The app is made up of three main components; Header, TextArea, CardsContainer and Button. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+- Header:
+Used only to keep track of the game balance and the counters.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- TextArea:
+This is the component that interacts with the user in three ways according to the three playStates; "beforePlay", "inPlay" and "afterPlay". AfterPlay will show the results while inPlay will show the selected cards for the round. The card on the left will be the computers random selection.
 
-### `npm run build`
+- CardsContainer
+Card options will be displayed on this component. Bets can be made by clicking on one or two of the cards. Bets will increase the same amount for each click.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Button
+Interaction with button is possible in beforePlay state if any bet has been placed. In InPlay  state there will be no interactions and in the afterPlay state xthe button can be used to move on to the next round to make new bets.
