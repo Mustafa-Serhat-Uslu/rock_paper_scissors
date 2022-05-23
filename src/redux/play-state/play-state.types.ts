@@ -1,4 +1,4 @@
-const enum PlayStateTypes {
+enum PlayStateTypes {
   CHANGE_PLAY_STATE = "CHANGE_PLAY_STATE",
 }
 
